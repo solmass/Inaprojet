@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+	xmlns:gap="http://phonegap.com/ns/1.0"
+	id ="fr.univ-paris8.guide"
+	version="1.0">
+
+	<name>Voyage</name>
+	<description>Application en AJAX</description>
+	<author href="http://www.univ-paris8.fr" email="louis.plessis@hotmail.fr" >Louis Plessis</author>
+
+	<icon src="icon.png" gap:role="default" />
+	
+
+</widget>

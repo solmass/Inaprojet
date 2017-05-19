@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Json Placeholder</title>
+
+
+  
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="script/jquery.js"></script>
+
+
+
+
+</head>
+
+<body>
+	<h1>Json Placeholder</h1>
+   
+    <div style="margin:50px;">
+    <div id="dest" style="background-color:cc0;"> 
+      Démarrage...
+    </div>
+    <div id="dest2" style="background-color:cc0;"> </div>
+    <div id="dest3" style="background-color:cc0;"> </div>
+
+    <input type="text" id="numpostload" value = "1" />
+    <input type="button" id="btnload" value = "Charger" />
+  </div>
+
+  <div style="margin:50px;">
+    <div id="destsupp" style="background-color:cc0;"> 
+      Démarrage...
+    </div>
+    <input type="text" id="numpostsupp" value = "1" />
+    <input type="button" id="btnsupp" value = "Supp" />
+  </div>
+
+  <div style="margin:50px;">
+    <div id="destupdate" style="background-color:cc0;"> 
+      Démarrage...
+    </div>
+    <input type="text" id="numpostupdate" value = "1" />
+    <input type="button" id="btnupdate" value = "Update" />
+  </div>
+
+    <script>
+    $(document).ready(function() { 
+      $('#dest').text("Pret à charger"); 
+      $("#btnload").click(function(event){
+        $.getJSON('http://jsonplaceholder.typicode.com/posts/' + $('#numpostload').val(), function(data) {
+          $('#dest').text(data.title);
+          $('#dest2').text(data.body);
+          $('#dest3').text(data.id);
+        });
+      $('#dest').text("Attente résultat...");
+      });
+      $('#destsupp').text("Pret à charger"); 
+      $("#btnsupp").click(function(event){
+        $.ajax('http://jsonplaceholder.typicode.com/posts/' + $('#numpostsupp').val(), {
+        method: 'DELETE'
+      });
+      $('#destsupp').text("Attente résultat...");
+      });
+      $('#destupdate').text("Pret à charger"); 
+      $("#btnupdate").click(function(event){
+        $.ajax('http://jsonplaceholder.typicode.com/posts', {
+          method: 'POST',
+          data: {
+        title: 'Mon Titre',
+        body: 'Contenu bla bla bla', userId: $('#numpostupdate').val()
+        } });
+      $('#destupdate').text("Attente résultat...");
+      });     
+    });
+
+  
+    </script>
+
+</body>
+
+</html>
